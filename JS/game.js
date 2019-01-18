@@ -1,24 +1,4 @@
-const ancho = 400;
-const alto = 400;
-
-let tesoro = {
-	x: numeroAletorio(ancho),
-	y: numeroAletorio(alto),
-};
-console.log(tesoro);
-
-let $mapa = document.getElementById('mapa');
-let $pista_text = document.getElementById('distancia');
-let clicks = 0;
-
-$mapa.addEventListener('click', function(even){
-	clicks++;
-	let distancia = obtenerDistancia(even, tesoro);
-	let distanciaHint = pista(distancia);
-	console.log(distancia);
-	$pista_text.innerHTML = distanciaHint;
-	if (distancia < 20 ) {
-		alert('Has encontrado el tesoro en '+clicks+' clicks!');
-		location.reload();
-	}
-});
+let numeroAletorio=size=>{return Math.floor(Math.random()*size);};let obtenerHipotenusa=(event,tsr)=>{let diffX=event.offsetX-tsr.Tesorox;let diffY=event.offsetY-tsr.Tesoroy;return Math.sqrt((diffX*diffX)+(diffY*diffY));};let pista=distancia=>{if(distancia<40){return"Bolling Hot"}else if(distancia<100){return"Hot"}else if(distancia<160){return"Warm"}else if(distancia<220){return"Cold"}else if(distancia<280){return"Really Cold"}else{return"Freezing"}}
+let clicks=0;const ancho=400;const alto=400;const $mapa=document.getElementById('mapa');const $pista_text=document.getElementById('pista');let tesoro={Tesorox:numeroAletorio(ancho),Tesoroy:numeroAletorio(alto),}
+$mapa.addEventListener('click',event=>{clicks++
+let distancia=obtenerHipotenusa(event,tesoro);let distanciaHint=pista(distancia);$pista_text.innerHTML=distanciaHint;if(distancia<20){alert("Has encontrado el tesoro en "+clicks+" clicks");location.reload();}});
